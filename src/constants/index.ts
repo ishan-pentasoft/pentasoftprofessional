@@ -40,3 +40,31 @@ export const services = [
     href: "/security-system",
   },
 ];
+
+export const footerNavigation = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Terms & Conditions",
+    href: "/terms",
+  },
+  {
+    title: "Privacy Policy",
+    href: "/privacy",
+  },
+  {
+    title: "Refund Policy",
+    href: "/refund",
+  },
+];
+
+export const quickLinks = [
+  { title: "About Us", href: "/about" },
+  { title: "Portfolio", href: "/portfolio" },
+  { title: "Blog", href: "/blog" },
+  { title: "Start your Project", href: "/contact" },
+  { title: "Contact Us", href: "/contact" },
+  { title: "Bank-Deposit", href: "/bank-deposit" },
+];
