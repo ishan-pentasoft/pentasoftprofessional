@@ -22,16 +22,16 @@ const TopBar = () => {
         {/* Contact Info */}
         <div className="flex flex-row flex-wrap items-center justify-center gap-2 lg:gap-5">
           {PHONE_NUMBER.map((phone) => (
-            <Link href={"tel:" + phone} key={phone}>
+            <Link href={"tel:" + phone} key={phone} aria-label={`Call +91 ${phone}`}>
               <div className="flex items-center justify-center gap-1 lg:gap-2 text-xs xl:text-base font-semibold lg:border-r lg:pr-3 xl:pr-5 border-muted-foreground hover:text-amber-500 transition-colors duration-200">
-                <Phone className="h-3 lg:h-4 text-amber-500" />
+                <Phone className="h-3 lg:h-4 text-amber-500" aria-hidden="true" />
                 +91 {phone}
               </div>
             </Link>
           ))}
-          <Link href={"mailto:" + EMAIL_ADDRESS}>
+          <Link href={"mailto:" + EMAIL_ADDRESS} aria-label={`Email ${EMAIL_ADDRESS}`}>
             <div className="flex items-center justify-center gap-1 lg:gap-2 text-xs xl:text-base font-semibold hover:text-amber-500 transition-colors duration-200">
-              <Mail className="h-3 lg:h-4 text-amber-500" />
+              <Mail className="h-3 lg:h-4 text-amber-500" aria-hidden="true" />
               <span className="hidden sm:inline">{EMAIL_ADDRESS}</span>
               <span className="sm:hidden">info@pentasoft...</span>
             </div>
@@ -43,22 +43,25 @@ const TopBar = () => {
           <span className="text-xs lg:text-sm xl:text-base font-semibold whitespace-nowrap">
             Follow Us:
           </span>
-          <Link href={facebookLink} target="_blank">
+          <Link href={facebookLink} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
             <FontAwesomeIcon
               icon={faFacebookF}
               className="h-3 hover:text-amber-500 transition-colors duration-200"
+              aria-hidden="true"
             />
           </Link>
-          <Link href={instagramLink} target="_blank">
+          <Link href={instagramLink} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
             <FontAwesomeIcon
               icon={faInstagram}
               className="h-3 hover:text-amber-500 transition-colors duration-200"
+              aria-hidden="true"
             />
           </Link>
-          <Link href={linkedinLink} target="_blank">
+          <Link href={linkedinLink} target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
             <FontAwesomeIcon
               icon={faLinkedin}
               className="h-3 hover:text-amber-500 transition-colors duration-200"
+              aria-hidden="true"
             />
           </Link>
         </div>

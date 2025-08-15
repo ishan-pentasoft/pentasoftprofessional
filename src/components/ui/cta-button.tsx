@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-interface CTAButtonProps {
+interface CTAButtonProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline";
@@ -9,12 +10,13 @@ interface CTAButtonProps {
   className?: string;
 }
 
-const CTAButton = ({ 
-  href, 
-  children, 
-  variant = "primary", 
+const CTAButton = ({
+  href,
+  children,
+  variant = "primary",
   size = "md",
-  className = "" 
+  className = "",
+  ...rest
 }: CTAButtonProps) => {
   const baseClasses = "group relative inline-flex items-center justify-center font-semibold rounded-lg shadow-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2";
   
@@ -40,6 +42,7 @@ const CTAButton = ({
     <Link
       href={href}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${hoverEffects[variant]} ${className}`}
+      {...rest}
     >
       <span className="relative z-10 flex items-center gap-2">
         {children}
@@ -48,6 +51,8 @@ const CTAButton = ({
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
         >
           <path 
             strokeLinecap="round" 

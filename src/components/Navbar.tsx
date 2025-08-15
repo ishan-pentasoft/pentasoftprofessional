@@ -43,17 +43,18 @@ const Navbar = () => {
   const [paymentOpen, setPaymentOpen] = React.useState(false);
 
   return (
-    <div className="w-full border-b border-gray-200 bg-white">
+    <nav className="w-full border-b border-gray-200 bg-white" aria-label="Main">
       <div className="max-w-[100rem] mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        <Link href="/" className="flex-shrink-0" aria-label="Pentasoft Professional Home">
           <Image
             src={"/logo.png"}
-            alt="logo"
+            alt="Pentasoft Professional logo"
             height={60}
             width={200}
             className="h-16 w-50 lg:h-[60px] lg:w-[200px]"
             draggable={false}
+            sizes="(min-width: 1024px) 200px, 160px"
           />
         </Link>
 
@@ -140,7 +141,7 @@ const Navbar = () => {
         {/* Mobile Navigation - Sheet/Sidebar */}
         <Sheet>
           <SheetTrigger asChild className="lg:hidden">
-            <button className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 h-10 w-10 border border-gray-200 hover:border-gray-300">
+            <button type="button" className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 h-10 w-10 border border-gray-200 hover:border-gray-300">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
             </button>
@@ -158,14 +159,15 @@ const Navbar = () => {
             <div className="h-full flex flex-col overflow-hidden">
               {/* Header with Logo and Company Name - Fixed */}
               <div className="flex-shrink-0 p-6 border-b border-gray-700">
-                <Link href="/">
+                <Link href="/" aria-label="Pentasoft Professional Home">
                   <Image
                     src={"/logo_light.png"}
-                    alt="logo"
+                    alt="Pentasoft Professional logo"
                     height={300}
                     width={300}
                     className="h-16 w-auto"
                     draggable={false}
+                    sizes="160px"
                   />
                 </Link>
               </div>
@@ -274,23 +276,29 @@ const Navbar = () => {
                     <Link
                       href={facebookLink}
                       target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Follow us on Facebook"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faFacebookF} className="h-5" />
+                      <FontAwesomeIcon icon={faFacebookF} className="h-5" aria-hidden="true" />
                     </Link>
                     <Link
                       href={instagramLink}
                       target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Follow us on Instagram"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faInstagram} className="h-5" />
+                      <FontAwesomeIcon icon={faInstagram} className="h-5" aria-hidden="true" />
                     </Link>
                     <Link
                       href={linkedinLink}
                       target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Connect with us on LinkedIn"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faLinkedin} className="h-5" />
+                      <FontAwesomeIcon icon={faLinkedin} className="h-5" aria-hidden="true" />
                     </Link>
                   </div>
                 </div>
@@ -305,7 +313,7 @@ const Navbar = () => {
           </CTAButton>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

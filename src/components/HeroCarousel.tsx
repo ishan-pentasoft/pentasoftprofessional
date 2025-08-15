@@ -24,8 +24,12 @@ const HeroCarousel = () => {
   const currentSlideData = heroCarouselData[currentSlide];
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-[#082448] to-amber-500 py-16 lg:py-20 flex items-center overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
+    <section
+      className="relative bg-gradient-to-br from-slate-900 via-[#082448] to-amber-500 py-16 lg:py-20 flex items-center overflow-hidden"
+      aria-roledescription="carousel"
+      aria-label="Hero featured content"
+    >
+      <div className="absolute inset-0 opacity-10" aria-hidden="true" role="presentation">
         <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
@@ -64,7 +68,7 @@ const HeroCarousel = () => {
 
           <div className="relative order-2 lg:order-2 flex items-center justify-center">
             <div className="relative w-full max-w-md">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-3xl blur-3xl" aria-hidden="true" role="presentation"></div>
 
               <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
                 <div className="relative aspect-square rounded-2xl overflow-hidden">
@@ -72,19 +76,24 @@ const HeroCarousel = () => {
                     src={currentSlideData.image}
                     alt={currentSlideData.title}
                     fill
+                    sizes="(min-width: 1024px) 28rem, 90vw"
+                    priority={currentSlide === 0}
                     className="object-cover"
                   />
                 </div>
               </div>
 
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl opacity-80 animate-bounce"></div>
-              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl opacity-80 animate-bounce" aria-hidden="true" role="presentation"></div>
+              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-60 animate-pulse" aria-hidden="true" role="presentation"></div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
-          {heroCarouselData.map((_, index) => (
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3"
+          aria-label="Hero slide indicators"
+        >
+          {heroCarouselData.map((item, index) => (
             <button
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
@@ -92,6 +101,9 @@ const HeroCarousel = () => {
                   ? "bg-gradient-to-r from-orange-500 to-yellow-500 w-12"
                   : "bg-white/30 hover:bg-white/50 w-2"
               }`}
+              type="button"
+              aria-label={`Go to slide ${index + 1}: ${item.title ?? ""}`}
+              aria-pressed={index === currentSlide}
               onClick={() => {
                 setIsTransitioning(true);
                 setTimeout(() => {

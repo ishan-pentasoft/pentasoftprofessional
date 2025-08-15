@@ -43,9 +43,15 @@ const Footer = () => {
                 <Input
                   type="email"
                   placeholder="Email Address"
+                  aria-label="Email address"
+                  autoComplete="email"
                   className="bg-white text-gray-900 placeholder:text-gray-500 rounded-full w-full h-12 sm:h-14 text-base sm:text-lg pr-32 sm:pr-36"
                 />
-                <Button className="absolute right-2 top-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-full px-4 sm:px-6 py-2 h-8 sm:h-10 text-xs sm:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] group">
+                <Button
+                  type="button"
+                  aria-label="Subscribe to our newsletter"
+                  className="absolute right-2 top-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-full px-4 sm:px-6 py-2 h-8 sm:h-10 text-xs sm:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] group"
+                >
                   <span className="flex items-center gap-1">
                     <span className="hidden sm:inline">Subscribe Now</span>
                     <span className="sm:hidden">Subscribe</span>
@@ -54,6 +60,8 @@ const Footer = () => {
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
                     >
                       <path
                         strokeLinecap="round"
@@ -77,6 +85,7 @@ const Footer = () => {
                     alt="Pentasoft Professional Logo"
                     width={300}
                     height={300}
+                    sizes="(min-width: 1024px) 300px, 180px"
                   />
                 </div>
               </div>
@@ -87,10 +96,10 @@ const Footer = () => {
                     Ready to discuss your project?
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <CTAButton href="/contact" variant="primary" size="md">
+                    <CTAButton href="/contact" variant="primary" size="md" aria-label="Start your project">
                       Start Your Project
                     </CTAButton>
-                    <CTAButton href="/contact" variant="primary" size="md">
+                    <CTAButton href="/contact" variant="primary" size="md" aria-label="Contact us">
                       Let&apos;s Talk
                     </CTAButton>
                   </div>
@@ -121,27 +130,30 @@ const Footer = () => {
                 Follow us on social media
               </p>
               <div className="flex gap-4">
-                <Link href={facebookLink} target="_blank" className="group">
+                <Link href={facebookLink} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="group">
                   <div className="w-10 h-10 bg-blue-800/30 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                     <FontAwesomeIcon
                       icon={faFacebookF}
                       className="h-4 w-4 text-gray-300 group-hover:text-white transition-colors"
+                      aria-hidden="true"
                     />
                   </div>
                 </Link>
-                <Link href={instagramLink} target="_blank" className="group">
+                <Link href={instagramLink} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="group">
                   <div className="w-10 h-10 bg-blue-800/30 hover:bg-pink-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                     <FontAwesomeIcon
                       icon={faInstagram}
                       className="h-4 w-4 text-gray-300 group-hover:text-white transition-colors"
+                      aria-hidden="true"
                     />
                   </div>
                 </Link>
-                <Link href={linkedinLink} target="_blank" className="group">
+                <Link href={linkedinLink} target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn" className="group">
                   <div className="w-10 h-10 bg-blue-800/30 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                     <FontAwesomeIcon
                       icon={faLinkedin}
                       className="h-4 w-4 text-gray-300 group-hover:text-white transition-colors"
+                      aria-hidden="true"
                     />
                   </div>
                 </Link>
