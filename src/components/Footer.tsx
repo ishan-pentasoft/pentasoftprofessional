@@ -91,7 +91,7 @@ const Footer = () => {
                       Start Your Project
                     </CTAButton>
                     <CTAButton href="/contact" variant="primary" size="md">
-                      Let's Talk
+                      Let&apos;s Talk
                     </CTAButton>
                   </div>
                 </div>
