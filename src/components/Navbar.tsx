@@ -1,17 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { services } from "@/constants";
 import {
-  ListItem,
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { Menu, ChevronDown } from "lucide-react";
@@ -39,13 +36,28 @@ import {
 } from "./ui/sheet";
 
 const Navbar = () => {
-  const [servicesOpen, setServicesOpen] = React.useState(false);
-  const [paymentOpen, setPaymentOpen] = React.useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
+  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
+  const [paymentMenuOpen, setPaymentMenuOpen] = useState(false);
+  const [webDevOpen, setWebDevOpen] = useState(false);
+  const [mobileDevOpen, setMobileDevOpen] = useState(false);
+
+  const webDevSub = [
+    { title: "PHP Development", href: "/web-development/php" },
+    { title: "CMS Development", href: "/web-development/cms" },
+    { title: ".NET Development", href: "/web-development/dotnet" },
+    { title: "E-commerce Development", href: "/web-development/ecommerce" },
+  ];
+  const mobileSub = [
+    { title: "Android Application", href: "/android-application" },
+    { title: "iPhone Application", href: "/iphone-application" },
+  ];
+  const paymentItems = [{ title: "Bank Deposit", href: "/bank-deposit" }];
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white" aria-label="Main">
       <div className="max-w-[100rem] mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
-        {/* Logo */}
         <Link
           href="/"
           className="flex-shrink-0"
@@ -73,21 +85,92 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="font-semibold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-orange-500 hover:underline  hover:underline-offset-4 hover:decoration-orange-500 hover:scale-105 px-2 xl:px-4">
-                Services
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  {services.map((service) => (
-                    <ListItem
-                      key={service.title}
-                      title={service.title}
-                      href={service.href}
-                    />
-                  ))}
-                </ul>
-              </NavigationMenuContent>
+            <NavigationMenuItem
+              className="relative hidden lg:list-item before:content-[''] before:absolute before:left-0 before:top-full before:h-2 before:w-full"
+              onMouseEnter={() => setServicesMenuOpen(true)}
+              onMouseLeave={() => setServicesMenuOpen(false)}
+            >
+              <button
+                className={`${navigationMenuTriggerStyle()} font-semibold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-orange-500 hover:underline  hover:underline-offset-4 hover:decoration-orange-500 hover:scale-105 px-2 xl:px-4 cursor-pointer`}
+                aria-expanded={servicesMenuOpen}
+                onClick={() => setServicesMenuOpen((v) => !v)}
+              >
+                <span className="inline-flex items-center">
+                  Services
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                      servicesMenuOpen ? "rotate-180" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
+                </span>
+              </button>
+              {servicesMenuOpen && (
+                <div className="absolute left-0 top-full mt-0 z-50 rounded-md border bg-white shadow-lg">
+                  {(() => {
+                    const others = services.filter(
+                      (s) =>
+                        s.title !== "Web Development" &&
+                        s.title !== "Mobile Application"
+                    );
+                    return (
+                      <div className="grid w-[460px] gap-2 p-2 md:w-[560px] lg:w-[620px] md:grid-cols-3">
+                        <div>
+                          <div className="px-2 py-1 font-semibold">
+                            Web Development
+                          </div>
+                          <ul className="space-y-1.5">
+                            {webDevSub.map((s) => (
+                              <li key={s.title} className="group">
+                                <Link
+                                  href={s.href}
+                                  className="block rounded px-2.5 py-1.5 text-sm text-gray-700 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:translate-x-1 relative after:absolute after:left-2 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all after:duration-300 group-hover:after:w-[calc(100%-1rem)]"
+                                >
+                                  {s.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="px-2 py-1 font-semibold">
+                            Mobile Application
+                          </div>
+                          <ul className="space-y-1.5">
+                            {mobileSub.map((s) => (
+                              <li key={s.title} className="group">
+                                <Link
+                                  href={s.href}
+                                  className="block rounded px-2.5 py-1.5 text-sm text-gray-700 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:translate-x-1 relative after:absolute after:left-2 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all after:duration-300 group-hover:after:w-[calc(100%-1rem)]"
+                                >
+                                  {s.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="px-2 py-1 font-semibold">
+                            Other Services
+                          </div>
+                          <ul className="space-y-1.5">
+                            {others.map((service) => (
+                              <li key={service.title} className="group">
+                                <Link
+                                  href={service.href}
+                                  className="block rounded px-2.5 py-1.5 text-sm text-gray-700 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:translate-x-1 relative after:absolute after:left-2 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all after:duration-300 group-hover:after:w-[calc(100%-1rem)]"
+                                >
+                                  {service.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink
@@ -113,15 +196,47 @@ const Navbar = () => {
                 <Link href="/live-demo">Live Demos</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="font-semibold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-orange-500 hover:underline hover:underline-offset-4 hover:decoration-orange-500 px-2 xl:px-4">
-                Payment
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-2 text-right md:w-[600px] px-2">
-                  <ListItem title="Bank Deposit" href="/bank-deposit" />
-                </ul>
-              </NavigationMenuContent>
+            <NavigationMenuItem
+              className="relative hidden lg:list-item before:content-[''] before:absolute before:left-0 before:top-full before:h-2 before:w-full"
+              onMouseEnter={() => setPaymentMenuOpen(true)}
+              onMouseLeave={() => setPaymentMenuOpen(false)}
+            >
+              <button
+                className={`${navigationMenuTriggerStyle()} font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:bg-transparent hover:text-orange-500 hover:underline hover:underline-offset-4 hover:decoration-orange-500 px-2 xl:px-4`}
+                aria-expanded={paymentMenuOpen}
+                onClick={() => setPaymentMenuOpen((v) => !v)}
+              >
+                <span className="inline-flex items-center">
+                  Payment
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                      paymentMenuOpen ? "rotate-180" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
+                </span>
+              </button>
+              {paymentMenuOpen && (
+                <div className="absolute left-0 top-full mt-0 z-50 rounded-md border bg-white shadow-lg">
+                  <div className="w-[250px] p-1">
+                    <div className="px-1 py-1 font-semibold">
+                      Payment Options
+                    </div>
+                    <ul className="space-y-1">
+                      {paymentItems.map((p) => (
+                        <li key={p.title} className="group">
+                          <Link
+                            href={p.href}
+                            className="block rounded px-2 py-1 text-sm text-gray-700 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:translate-x-1 relative after:absolute after:left-2 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all after:duration-300 group-hover:after:w-[calc(100%-1rem)]"
+                          >
+                            {p.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink
@@ -195,15 +310,83 @@ const Navbar = () => {
                       />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="overflow-hidden transition-all duration-200">
-                      {services.map((service) => (
-                        <Link
-                          key={service.title}
-                          href={service.href}
-                          className="flex items-center px-10 py-3 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200"
-                        >
-                          {service.title}
-                        </Link>
-                      ))}
+                      {services.map((service) => {
+                        const isWeb = service.title === "Web Development";
+                        const isMobile = service.title === "Mobile Application";
+                        if (isWeb) {
+                          return (
+                            <Collapsible
+                              key={service.title}
+                              open={webDevOpen}
+                              onOpenChange={setWebDevOpen}
+                              className="border-t border-gray-800 first:border-t-0"
+                            >
+                              <CollapsibleTrigger className="flex items-center justify-between w-full px-10 py-3 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200">
+                                <span>Web Development</span>
+                                <ChevronDown
+                                  className={`h-4 w-4 transition-transform duration-200 ${
+                                    webDevOpen ? "rotate-180" : ""
+                                  }`}
+                                />
+                              </CollapsibleTrigger>
+                              <CollapsibleContent>
+                                <div className="mb-2">
+                                  {webDevSub.map((s) => (
+                                    <Link
+                                      key={s.title}
+                                      href={s.href}
+                                      className="flex items-center px-14 py-2 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200"
+                                    >
+                                      — {s.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </CollapsibleContent>
+                            </Collapsible>
+                          );
+                        }
+                        if (isMobile) {
+                          return (
+                            <Collapsible
+                              key={service.title}
+                              open={mobileDevOpen}
+                              onOpenChange={setMobileDevOpen}
+                              className="border-t border-gray-800"
+                            >
+                              <CollapsibleTrigger className="flex items-center justify-between w-full px-10 py-3 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200">
+                                <span>Mobile Application</span>
+                                <ChevronDown
+                                  className={`h-4 w-4 transition-transform duration-200 ${
+                                    mobileDevOpen ? "rotate-180" : ""
+                                  }`}
+                                />
+                              </CollapsibleTrigger>
+                              <CollapsibleContent>
+                                <div className="mb-2">
+                                  {mobileSub.map((s) => (
+                                    <Link
+                                      key={s.title}
+                                      href={s.href}
+                                      className="flex items-center px-14 py-2 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200"
+                                    >
+                                      — {s.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </CollapsibleContent>
+                            </Collapsible>
+                          );
+                        }
+                        return (
+                          <Link
+                            key={service.title}
+                            href={service.href}
+                            className="flex items-center px-10 py-3 text-gray-300 text-sm hover:bg-blue-800 hover:text-white transition-colors duration-200 border-t border-gray-800 first:border-t-0"
+                          >
+                            {service.title}
+                          </Link>
+                        );
+                      })}
                     </CollapsibleContent>
                   </Collapsible>
 
