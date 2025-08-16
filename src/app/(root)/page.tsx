@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
 import AboutSection from "@/components/AboutSection";
 import WhatWeOffer from "@/components/WhatWeOffer";
+import ProjectsCarousel from "@/components/ProjectsCarousel";
 
 const page = () => {
   return (
@@ -12,6 +13,7 @@ const page = () => {
       <ServicesSection />
       <StatsSection />
       <AboutSection />
+      <ProjectsCarousel />
       <WhatWeOffer />
     </main>
   );
