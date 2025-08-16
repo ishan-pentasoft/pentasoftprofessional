@@ -2,6 +2,8 @@ import React from "react";
 import HeroCarousel from "@/components/HeroCarousel";
 import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
+import AboutSection from "@/components/AboutSection";
+import WhatWeOffer from "@/components/WhatWeOffer";
 
 const page = () => {
   return (
@@ -9,6 +11,8 @@ const page = () => {
       <HeroCarousel />
       <ServicesSection />
       <StatsSection />
+      <AboutSection />
+      <WhatWeOffer />
     </main>
   );
 };
