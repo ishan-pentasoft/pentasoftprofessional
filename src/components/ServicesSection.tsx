@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { servicesCards } from "@/constants/services";
+import CTAButton from "./ui/cta-button";
 
 const ServicesSection = () => {
   return (
@@ -78,6 +79,11 @@ const ServicesSection = () => {
             </li>
           ))}
         </ul>
+        <div className="mt-10 flex justify-center">
+          <CTAButton href="/get-a-quote" variant="primary" size="md">
+            Get a Quote
+          </CTAButton>
+        </div>
       </div>
     </section>
   );

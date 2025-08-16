@@ -65,7 +65,6 @@ export const footerNavigation = [
 export const quickLinks = [
   { title: "About Us", href: "/about" },
   { title: "Portfolio", href: "/portfolio" },
-  { title: "Blog", href: "/blog" },
   { title: "Start your Project", href: "/contact" },
   { title: "Contact Us", href: "/contact" },
   { title: "Bank-Deposit", href: "/bank-deposit" },

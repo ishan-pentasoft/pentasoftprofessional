@@ -5,7 +5,7 @@ import { offers } from "@/constants/offers";
 
 const WhatWeOffer = () => {
   return (
-    <section aria-labelledby="offer-heading" className="relative py-18 lg:py-24 overflow-hidden">
+    <section aria-labelledby="offer-heading" className="relative py-16 lg:py-20 overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 -z-10 bg-gradient-to-b from-[#081A2E] via-[#0A2542] to-[#081A2E]"

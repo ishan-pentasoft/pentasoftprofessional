@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CTAButton from "./ui/cta-button";
 import { projects } from "@/constants/projects";
 import {
   Carousel,
@@ -88,12 +89,12 @@ const ProjectsCarousel = () => {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="pointer-events-auto flex items-center justify-between gap-3 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md px-4 py-3 shadow-lg">
-                        <h3 className="text-white text-sm sm:text-base md:text-lg font-semibold leading-tight tracking-tight drop-shadow line-clamp-1">
+                        <h3 className="text-white text-sm sm:text-base md:text-md font-semibold leading-tight tracking-tight drop-shadow line-clamp-1">
                           {p.title}
                         </h3>
                         <Link
                           href={p.liveUrl || "#"}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white hover:text-[#082448] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/10 px-3 sm:px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-white hover:text-[#082448] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                         >
                           Read More
                         </Link>
@@ -104,6 +105,11 @@ const ProjectsCarousel = () => {
               ))}
             </CarouselContent>
           </Carousel>
+        </div>
+        <div className="mt-10 flex justify-center">
+          <CTAButton href="/portfolio" variant="primary" size="md">
+            View All Projects
+          </CTAButton>
         </div>
       </div>
     </section>

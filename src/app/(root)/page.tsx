@@ -5,16 +5,18 @@ import StatsSection from "@/components/StatsSection";
 import AboutSection from "@/components/AboutSection";
 import WhatWeOffer from "@/components/WhatWeOffer";
 import ProjectsCarousel from "@/components/ProjectsCarousel";
+import LogoMarqee from "@/components/LogoMarqee";
 
 const page = () => {
   return (
     <main className="min-h-screen">
       <HeroCarousel />
+      <LogoMarqee />
       <ServicesSection />
-      <StatsSection />
-      <AboutSection />
-      <ProjectsCarousel />
       <WhatWeOffer />
+      <StatsSection />
+      <ProjectsCarousel />
+      <AboutSection />
     </main>
   );
 };

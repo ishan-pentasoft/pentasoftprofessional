@@ -46,7 +46,11 @@ const Navbar = () => {
     <nav className="w-full border-b border-gray-200 bg-white" aria-label="Main">
       <div className="max-w-[100rem] mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0" aria-label="Pentasoft Professional Home">
+        <Link
+          href="/"
+          className="flex-shrink-0"
+          aria-label="Pentasoft Professional Home"
+        >
           <Image
             src={"/logo.png"}
             alt="Pentasoft Professional logo"
@@ -124,14 +128,6 @@ const Navbar = () => {
                 asChild
                 className={`${navigationMenuTriggerStyle()} font-semibold hover:bg-transparent hover:text-orange-500 hover:underline hover:underline-offset-4 hover:decoration-orange-500 px-2 xl:px-4`}
               >
-                <Link href="/blog">Blog</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={`${navigationMenuTriggerStyle()} font-semibold hover:bg-transparent hover:text-orange-500 hover:underline hover:underline-offset-4 hover:decoration-orange-500 px-2 xl:px-4`}
-              >
                 <Link href="/contact">Contact</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -141,7 +137,10 @@ const Navbar = () => {
         {/* Mobile Navigation - Sheet/Sidebar */}
         <Sheet>
           <SheetTrigger asChild className="lg:hidden">
-            <button type="button" className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 h-10 w-10 border border-gray-200 hover:border-gray-300">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 h-10 w-10 border border-gray-200 hover:border-gray-300"
+            >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
             </button>
@@ -280,7 +279,11 @@ const Navbar = () => {
                       aria-label="Follow us on Facebook"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faFacebookF} className="h-5" aria-hidden="true" />
+                      <FontAwesomeIcon
+                        icon={faFacebookF}
+                        className="h-5"
+                        aria-hidden="true"
+                      />
                     </Link>
                     <Link
                       href={instagramLink}
@@ -289,7 +292,11 @@ const Navbar = () => {
                       aria-label="Follow us on Instagram"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faInstagram} className="h-5" aria-hidden="true" />
+                      <FontAwesomeIcon
+                        icon={faInstagram}
+                        className="h-5"
+                        aria-hidden="true"
+                      />
                     </Link>
                     <Link
                       href={linkedinLink}
@@ -298,7 +305,11 @@ const Navbar = () => {
                       aria-label="Connect with us on LinkedIn"
                       className="text-white hover:text-amber-500 transition-colors duration-200"
                     >
-                      <FontAwesomeIcon icon={faLinkedin} className="h-5" aria-hidden="true" />
+                      <FontAwesomeIcon
+                        icon={faLinkedin}
+                        className="h-5"
+                        aria-hidden="true"
+                      />
                     </Link>
                   </div>
                 </div>
