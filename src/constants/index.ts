@@ -1,3 +1,5 @@
+import { Award, ClipboardCheck, Globe, Briefcase } from "lucide-react";
+
 export const services = [
   {
     title: "Graphic Designing",
@@ -102,5 +104,28 @@ export const heroCarouselData = [
       text: "Discover More",
       href: "/iphone-app-development",
     },
+  },
+];
+
+export const stats = [
+  {
+    label: "Years Experience",
+    value: "10+",
+    Icon: Award,
+  },
+  {
+    label: "Projects Delivered",
+    value: "1000+",
+    Icon: ClipboardCheck,
+  },
+  {
+    label: "Clients Worldwide",
+    value: "500+",
+    Icon: Globe,
+  },
+  {
+    label: "Professionals",
+    value: "25+",
+    Icon: Briefcase,
   },
 ];
